@@ -31,7 +31,6 @@ public class GankAdapter extends MultiLayoutBaseAdapter {
 
     @Override
     public int getItemType(int i) {
-        Log.d("Fxy", "getItemCount: "+getItemCount());
         return NORMAL;
     }
 

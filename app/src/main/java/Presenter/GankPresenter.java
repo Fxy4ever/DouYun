@@ -3,6 +3,7 @@ package Presenter;
 import android.util.Log;
 
 import java.util.List;
+import java.util.logging.Handler;
 
 import Model.GankImp;
 import Model.GankInterface;
@@ -33,12 +34,16 @@ public class GankPresenter {
      */
     public void requestGank(){
         Log.d("Fxy", "requestGank: ");
+
+
         new Thread(new Runnable() {
             @Override
             public void run() {
                 gankInterface.loadGankList();
                 if(iGankfragment!=null){
+                    Log.d("Fxy", "run: "+getList().size());
                     iGankfragment.GetGankList(getList());
+                    iGankfragment.InvalidateAdapter().notifyDataSetChanged();
                 }
             }
         }).start();

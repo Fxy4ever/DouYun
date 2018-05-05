@@ -9,12 +9,14 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.widget.SwipeRefreshLayout;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 
 import com.example.mac.douyun.R;
 
@@ -60,7 +62,8 @@ public class GankFragment extends Fragment implements IGankfragment {
     private void initView(){
         recyclerView = view.findViewById(R.id.gank_recyclerview);
         gankAdapter = new GankAdapter(context,datalist,layoutId);
-        StaggeredGridLayoutManager manager = new StaggeredGridLayoutManager(2,StaggeredGridLayoutManager.VERTICAL);
+//        StaggeredGridLayoutManager manager = new StaggeredGridLayoutManager(2,StaggeredGridLayoutManager.VERTICAL);
+        LinearLayoutManager manager = new LinearLayoutManager(context);
         recyclerView.setAdapter(gankAdapter);
         recyclerView.setLayoutManager(manager);
         swipeRefreshLayout = ((Activity)context).findViewById(R.id.gank_swipe);
@@ -87,6 +90,11 @@ public class GankFragment extends Fragment implements IGankfragment {
 
             }
         });
+    }
+
+    @Override
+    public GankAdapter InvalidateAdapter() {
+        return gankAdapter;
     }
 
 

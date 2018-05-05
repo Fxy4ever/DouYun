@@ -28,6 +28,7 @@ public class GankImp implements GankInterface {
             @Override
             public void onSucceed(String response) {
                 JsonUtil.AddData(response,Ganklist);
+                ReturnList();
             }
 
             @Override
