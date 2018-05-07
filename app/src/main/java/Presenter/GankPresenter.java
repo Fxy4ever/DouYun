@@ -1,12 +1,15 @@
 package Presenter;
 
+import android.app.Activity;
 import android.util.Log;
 
 import java.util.List;
 import java.util.logging.Handler;
 
+import Bean.GankBean;
 import Model.GankImp;
 import Model.GankInterface;
+import Util.JsonUtil;
 import View.IGankfragment;
 
 /**
@@ -22,30 +25,55 @@ public class GankPresenter {
         gankInterface = new GankImp();
     }
 
-    /**
-     * Presenter -> model
-     */
-    public List getList(){
-        return gankInterface.ReturnList();
-    }
 
     /**
      * Presenter -> view
      */
     public void requestGank(){
         Log.d("Fxy", "requestGank: ");
-
-
-        new Thread(new Runnable() {
+        gankInterface.loadGankList(new GankInterface.loadCallback() {
             @Override
-            public void run() {
-                gankInterface.loadGankList();
+            public void Succeed(String response) {
                 if(iGankfragment!=null){
-                    Log.d("Fxy", "run: "+getList().size());
-                    iGankfragment.GetGankList(getList());
-                    iGankfragment.InvalidateAdapter().notifyDataSetChanged();
+                    JsonUtil.AddData(response,iGankfragment.GetGankList());
+                    ((Activity)(iGankfragment.getContext())).runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            iGankfragment.GetAdapter().notifyDataSetChanged();
+                        }
+                    });
                 }
             }
-        }).start();
+
+            @Override
+            public void Failed(String response) {
+
+            }
+        });
     }
+
+    public void RefreshData(){
+        gankInterface.RefreshList(new GankInterface.loadCallback() {
+            @Override
+            public void Succeed(String response) {
+                if(iGankfragment!=null){
+                    iGankfragment.GetGankList().clear();
+                    JsonUtil.AddData(response,iGankfragment.GetGankList());
+                    ((Activity)(iGankfragment.getContext())).runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            iGankfragment.GetAdapter().notifyDataSetChanged();
+                        }
+                    });
+                }
+            }
+
+            @Override
+            public void Failed(String response) {
+
+            }
+        });
+    }
+
+
 }

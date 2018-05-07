@@ -1,5 +1,6 @@
 package View;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -22,10 +23,11 @@ import com.example.mac.douyun.R;
 import java.util.ArrayList;
 import java.util.List;
 
+import Adapter.GankAdapter;
 import Adapter.mFragmentPagerAdapter;
 
 public class MainActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener {
+        implements NavigationView.OnNavigationItemSelectedListener, GankFragment.CallBackValue {
     private Toolbar toolbar;
     private FloatingActionButton fab;
     private DrawerLayout drawer;
@@ -142,5 +144,15 @@ public class MainActivity extends AppCompatActivity
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    @Override
+    public void SendValue(String Value) {
+        Intent intent = new Intent();
+        intent.setClass(this, ShowImgActivity.class);
+        Bundle bundle = new Bundle();
+        bundle.putString("img", Value);
+        intent.putExtra("bd", bundle);
+        startActivity(intent);
     }
 }

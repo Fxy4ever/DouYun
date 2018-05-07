@@ -5,4 +5,7 @@ package config;
  */
 
 public class Api {
+    public static String GankUrl(){
+        return "http://gank.io/api/data/%E7%A6%8F%E5%88%A9/20/";
+    }
 }

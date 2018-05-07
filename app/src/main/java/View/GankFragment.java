@@ -24,6 +24,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import Adapter.GankAdapter;
+import Bean.GankBean;
 import Presenter.GankPresenter;
 
 /**
@@ -35,13 +36,23 @@ public class GankFragment extends Fragment implements IGankfragment {
     private Context context;
     private RecyclerView recyclerView;
     private GankAdapter gankAdapter;
-    private List datalist;
-    private List datalist2;
-    private int layoutId[]= {R.layout.gank_normal_item};
+    private List<GankBean> datalist;
+    private int layoutId[]= {R.layout.gank_normal_item,R.layout.gank_load_item};
     private SwipeRefreshLayout swipeRefreshLayout;
     private boolean isRefresh=false;
     private View view;
     GankPresenter gankPresenter;
+
+    CallBackValue callBackValue;
+    public interface CallBackValue{
+        void SendValue(String Value);
+    }
+
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        callBackValue = (CallBackValue) getActivity();
+    }
 
     @SuppressLint("ValidFragment")
     public GankFragment(Context context) {
@@ -61,41 +72,49 @@ public class GankFragment extends Fragment implements IGankfragment {
 
     private void initView(){
         recyclerView = view.findViewById(R.id.gank_recyclerview);
+        datalist = new ArrayList<>();
         gankAdapter = new GankAdapter(context,datalist,layoutId);
-//        StaggeredGridLayoutManager manager = new StaggeredGridLayoutManager(2,StaggeredGridLayoutManager.VERTICAL);
-        LinearLayoutManager manager = new LinearLayoutManager(context);
+        StaggeredGridLayoutManager manager = new StaggeredGridLayoutManager(2,StaggeredGridLayoutManager.VERTICAL);
+//        LinearLayoutManager manager = new LinearLayoutManager(context);
         recyclerView.setAdapter(gankAdapter);
         recyclerView.setLayoutManager(manager);
-        swipeRefreshLayout = ((Activity)context).findViewById(R.id.gank_swipe);
-    }
+        swipeRefreshLayout = view.findViewById(R.id.gank_swipe);
 
-
-    @Override
-    public void GetGankList(List gankList) {
-        datalist = gankList;
-    }
-
-    @Override
-    public void GankRefresh(final List ganklist) {
         swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
                 if(!isRefresh){
                     isRefresh = true;
-                    datalist.clear();
-                    gankAdapter.Refresh(ganklist);
+                    gankPresenter.RefreshData();
                     swipeRefreshLayout.setRefreshing(false);
                     isRefresh = false;
                 }
 
             }
         });
+        gankAdapter.onItemClickListner(new GankAdapter.OnItemClickListener() {
+            @Override
+            public void OnClickItem(View view, int position) {
+                String url = datalist.get(position).getUrl();
+                callBackValue.SendValue(url);
+            }
+        });
+    }
+
+
+    @Override
+    public List<GankBean> GetGankList() {
+        return datalist;
     }
 
     @Override
-    public GankAdapter InvalidateAdapter() {
+    public GankAdapter GetAdapter() {
         return gankAdapter;
     }
 
-
+    @Nullable
+    @Override
+    public Context getContext() {
+        return context;
+    }
 }

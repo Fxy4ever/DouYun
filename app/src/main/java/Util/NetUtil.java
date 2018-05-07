@@ -89,17 +89,11 @@ public class NetUtil{
             @Override
             public void run() {
                 final String response = NetUtil.get(url,params);
-//                try {
-//                    JSONObject jsonObject = new JSONObject(response);
-//                    int code = jsonObject.getInt("code");
                     if(true){
                         callback.onSucceed(response);
                     }else{
                         callback.onFailed(response);
                     }
-//                } catch (JSONException e) {
-//                    e.printStackTrace();
-//                }
             }
         };
         THREAD_POOL_EXECUTOR.execute(get);
