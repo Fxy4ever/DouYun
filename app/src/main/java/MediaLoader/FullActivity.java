@@ -5,6 +5,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.content.res.Configuration;
+import android.media.MediaPlayer;
 import android.os.Build;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
@@ -27,11 +28,11 @@ import com.example.mac.douyun.R;
  * 全屏界面
  */
 
-public class FullActivity extends Activity {
+public class FullActivity extends AppCompatActivity {
     private ImageButton play,fullScreen;
     private Button back;
     private FMediaPlayer player;
-    private SurfaceView surfaceView;
+    private VideoSurfaceView surfaceView;
     private ProgressBar progressBar;
     private SeekBar seekBar;
     private TextView currentTime;
@@ -85,7 +86,7 @@ public class FullActivity extends Activity {
                 .setUrl(url)
                 .setProgressBar(progressBar)
                 .setTextview(currentTime,totalTime)
-                .setVideoPreView()
+//                .setVideoPreView()
                 .play();
     }
 

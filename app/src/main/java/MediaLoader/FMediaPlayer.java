@@ -43,7 +43,7 @@ public class FMediaPlayer {
     private MediaPlayer mediaPlayer;
     private String url;
     private SurfaceHolder surfaceHolder;
-    private SurfaceView surfaceView;
+    private VideoSurfaceView surfaceView;
     private ProgressBar progressBar;
     private Context context;
     private SeekBar seekBar;
@@ -61,7 +61,7 @@ public class FMediaPlayer {
     public FMediaPlayer() {
         mediaPlayer = new MediaPlayer();
     }
-    public FMediaPlayer setSurfaceView(SurfaceView surfaceView){
+    public FMediaPlayer setSurfaceView(VideoSurfaceView surfaceView){
         this.surfaceView = surfaceView;
         return this;
     }
@@ -97,6 +97,7 @@ public class FMediaPlayer {
         mediaPlayer.setOnPreparedListener(listener);
         mediaPlayer.setOnCompletionListener(listener);
         mediaPlayer.setOnErrorListener(listener);
+        mediaPlayer.setOnVideoSizeChangedListener(sizeChangedListener);
         seekBar.setOnSeekBarChangeListener(seekBarChangeListener);
     }
     private void initHolder(){
@@ -224,6 +225,9 @@ public class FMediaPlayer {
         }).start();
     }
 
+    public MediaPlayer getMediaPlayer(){
+        return mediaPlayer;
+    }
     private SeekBar.OnSeekBarChangeListener seekBarChangeListener = new SeekBar.OnSeekBarChangeListener() {
         @Override
         public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
@@ -283,7 +287,7 @@ public class FMediaPlayer {
                 public void run() {
                     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
                         Drawable drawable = new BitmapDrawable(mbitmap);
-                        imageView.setBackground(drawable);
+                        imageView.setImageDrawable(drawable);
                     }
                 }
             });
@@ -353,7 +357,12 @@ public class FMediaPlayer {
         }
         return null;
     }
-
+    private MediaPlayer.OnVideoSizeChangedListener sizeChangedListener = new MediaPlayer.OnVideoSizeChangedListener() {
+        @Override
+        public void onVideoSizeChanged(MediaPlayer mp, int width, int height) {
+            surfaceView.adjustSize(mp.getVideoWidth(),mp.getVideoHeight());
+        }
+    };
     private class MediaPlayerListener implements MediaPlayer.OnPreparedListener
             ,MediaPlayer.OnCompletionListener,MediaPlayer.OnErrorListener{
 
