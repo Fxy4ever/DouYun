@@ -23,3 +23,6 @@
 <img width="300" height="560" src="https://github.com/fengxinyao1/DouYun/blob/master/app/photos/3.jpg"/><br>
 
 <img width="300" height="560" src="https://github.com/fengxinyao1/DouYun/blob/master/app/photos/4.jpg"/><br>
+
+<img width="300" height="560" src="https://github.com/fengxinyao1/DouYun/blob/master/app/photos/5.jpg"/><br>
+
