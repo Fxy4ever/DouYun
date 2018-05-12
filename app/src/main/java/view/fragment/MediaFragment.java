@@ -1,4 +1,4 @@
-package view;
+package view.fragment;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -16,14 +16,14 @@ import android.widget.Button;
 import com.example.mac.douyun.R;
 
 import Adapter.MediaAdapter;
-import model.IMediaInterface;
 import presenter.MediaPresenter;
+import view.frag_interface.IMediaFragment;
 
 /**
  * Created by mac on 2018/5/12.
  */
 
-public class MediaFragment extends Fragment implements IMediaFragment{
+public class MediaFragment extends Fragment implements IMediaFragment {
     private View view;
     private RecyclerView recyclerView;
     private SwipeRefreshLayout swipeRefreshLayout;

@@ -1,4 +1,4 @@
-package view;
+package view.fragment;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
@@ -22,6 +22,7 @@ import java.util.List;
 import Adapter.GankAdapter;
 import Bean.GankBean;
 import presenter.GankPresenter;
+import view.frag_interface.IGankfragment;
 
 /**
  * Created by mac on 2018/5/2.

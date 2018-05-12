@@ -26,6 +26,8 @@ import java.util.List;
 
 import Adapter.mFragmentPagerAdapter;
 import MediaLoader.FullActivity;
+import view.fragment.GankFragment;
+import view.fragment.MediaFragment;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener

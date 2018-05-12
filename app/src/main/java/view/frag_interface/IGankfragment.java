@@ -1,4 +1,4 @@
-package view;
+package view.frag_interface;
 
 
 import android.content.Context;

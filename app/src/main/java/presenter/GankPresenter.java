@@ -3,10 +3,10 @@ package presenter;
 import android.app.Activity;
 import android.util.Log;
 
-import model.GankImp;
-import model.GankInterface;
+import model.lmp.GankImp;
+import model.model_Interface.GankInterface;
 import util.JsonUtil;
-import view.IGankfragment;
+import view.frag_interface.IGankfragment;
 
 /**
  * Created by mac on 2018/5/2.

@@ -11,10 +11,10 @@ import java.util.List;
 
 import Adapter.MediaAdapter;
 import Bean.MediaBean;
-import model.IMediaInterface;
-import model.MediaImp;
+import model.model_Interface.IMediaInterface;
+import model.lmp.MediaImp;
 import util.JsonUtil;
-import view.IMediaFragment;
+import view.frag_interface.IMediaFragment;
 
 /**
  * Created by mac on 2018/5/12.
@@ -24,7 +24,7 @@ public class MediaPresenter {
     private IMediaFragment fragment;
     private IMediaInterface mediaInterface;
     private List<MediaBean> beanList = new ArrayList<>();
-    private int[] layoutId={R.layout.media_item,R.layout.gank_load_item};
+    private int[] layoutId={R.layout.media_item,R.layout.media_load_item};
     private boolean isRefresh = false;
 
     public MediaPresenter(IMediaFragment fragment) {

@@ -1,4 +1,4 @@
-package model;
+package model.model_Interface;
 
 /**
  * Created by mac on 2018/5/12.

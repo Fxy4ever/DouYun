@@ -1,9 +1,10 @@
-package model;
+package model.lmp;
 
 import java.util.HashMap;
 import java.util.Map;
 
 import config.Api;
+import model.model_Interface.IMediaInterface;
 import util.NetUtil;
 
 /**

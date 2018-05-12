@@ -1,10 +1,11 @@
-package model;
+package model.lmp;
 
 import android.util.Log;
 
 import java.util.HashMap;
 import java.util.Map;
 
+import model.model_Interface.GankInterface;
 import util.NetUtil;
 import config.Api;
 
