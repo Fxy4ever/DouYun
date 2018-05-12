@@ -14,3 +14,12 @@
 8.简单封装的NetUtil<br>
 9.简单封装的Json工具类(手动解析一次就好啦 干嘛要用反射23333 反正以后是用Gson的)<br>
 就当成练练手吧 ！
+
+软件截图:<br>
+<img width="300" height="560" src="https://github.com/fengxinyao1/DouYun/blob/master/app/photos/1.jpg"/><br>
+
+<img width="300" height="560" src="https://github.com/fengxinyao1/DouYun/blob/master/app/photos/2.jpg"/><br>
+
+<img width="300" height="560" src="https://github.com/fengxinyao1/DouYun/blob/master/app/photos/3.jpg"/><br>
+
+<img width="300" height="560" src="https://github.com/fengxinyao1/DouYun/blob/master/app/photos/4.jpg"/><br>
