@@ -1,10 +1,11 @@
-package View;
+package view;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.design.widget.TabLayout;
+import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.util.Log;
@@ -23,18 +24,19 @@ import com.example.mac.douyun.R;
 import java.util.ArrayList;
 import java.util.List;
 
-import Adapter.GankAdapter;
 import Adapter.mFragmentPagerAdapter;
+import MediaLoader.FullActivity;
 
 public class MainActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener, GankFragment.CallBackValue {
+        implements NavigationView.OnNavigationItemSelectedListener
+        , GankFragment.CallBackValue,MediaFragment.CallBackValue{
     private Toolbar toolbar;
     private FloatingActionButton fab;
     private DrawerLayout drawer;
     private ActionBarDrawerToggle toggle;
     private FragmentPagerAdapter fragmentPagerAdapter;
-    private List FragmentList;
-    private List titleList;
+    private List<Fragment> FragmentList;
+    private List<String> titleList;
     private ViewPager viewPager;
     private TabLayout tabLayout;
 
@@ -89,8 +91,11 @@ public class MainActivity extends AppCompatActivity
         FragmentList = new ArrayList();
         titleList = new ArrayList();
         GankFragment gankFragment = new GankFragment(this);
+        MediaFragment mediaFragment = new MediaFragment();
         FragmentList.add(gankFragment);
+        FragmentList.add(mediaFragment);
         titleList.add("Gank");
+        titleList.add("百思不得姐");
         fragmentPagerAdapter = new mFragmentPagerAdapter(getSupportFragmentManager(),FragmentList,titleList);
         viewPager.setAdapter(fragmentPagerAdapter);
         tabLayout.setupWithViewPager(viewPager);
@@ -152,6 +157,16 @@ public class MainActivity extends AppCompatActivity
         intent.setClass(this, ShowImgActivity.class);
         Bundle bundle = new Bundle();
         bundle.putString("img", Value);
+        intent.putExtra("bd", bundle);
+        startActivity(intent);
+    }
+
+    @Override
+    public void SendMediaValue(String Value) {
+        Intent intent = new Intent();
+        intent.setClass(this, FullActivity.class);
+        Bundle bundle = new Bundle();
+        bundle.putString("mediaUrl", Value);
         intent.putExtra("bd", bundle);
         startActivity(intent);
     }

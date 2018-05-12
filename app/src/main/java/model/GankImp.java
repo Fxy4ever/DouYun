@@ -1,17 +1,11 @@
-package Model;
+package model;
 
 import android.util.Log;
 
-import org.json.JSONObject;
-
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
-import Bean.GankBean;
-import Util.JsonUtil;
-import Util.NetUtil;
+import util.NetUtil;
 import config.Api;
 
 /**
@@ -51,5 +45,4 @@ public class GankImp implements GankInterface {
             }
         });
     }
-
 }

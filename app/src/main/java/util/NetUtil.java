@@ -1,4 +1,4 @@
-package Util;
+package util;
 
 import android.accounts.NetworkErrorException;
 import android.os.Looper;
@@ -154,6 +154,7 @@ public class NetUtil{
         HttpURLConnection conn = null;
         try {
             URL url = configuraGetUrl(path,params);
+            Log.d("NetUtil", "get: "+url);
             conn = (HttpURLConnection)url.openConnection();
             conn.setRequestMethod("GET");
             conn.setConnectTimeout(5000);
@@ -194,10 +195,11 @@ public class NetUtil{
             return str;
         }
         for (Map.Entry<String,String> entry:params.entrySet()){
-            str = entry.getKey()+"="+entry.getValue()+"&";
+            str += (entry.getKey()+"="+entry.getValue()+"&");
         }
-        String subStr = str.substring(str.length()-1);
-        return URLEncoder.encode(subStr,"UTF-8");
+        String subStr = str.substring(0,str.length()-1);
+//        return URLEncoder.encode(subStr,"UTF-8");
+        return subStr;
     }
 
     /**

@@ -8,4 +8,7 @@ public class Api {
     public static String GankUrl(){
         return "http://gank.io/api/data/%E7%A6%8F%E5%88%A9/20/";
     }
+    public static String MediaUrl(){
+        return "http://route.showapi.com/255-1";
+    }
 }

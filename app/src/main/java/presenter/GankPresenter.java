@@ -1,16 +1,12 @@
-package Presenter;
+package presenter;
 
 import android.app.Activity;
 import android.util.Log;
 
-import java.util.List;
-import java.util.logging.Handler;
-
-import Bean.GankBean;
-import Model.GankImp;
-import Model.GankInterface;
-import Util.JsonUtil;
-import View.IGankfragment;
+import model.GankImp;
+import model.GankInterface;
+import util.JsonUtil;
+import view.IGankfragment;
 
 /**
  * Created by mac on 2018/5/2.

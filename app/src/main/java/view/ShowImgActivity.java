@@ -1,9 +1,9 @@
-package View;
+package view;
 
+import android.app.Activity;
 import android.app.WallpaperManager;
 import android.content.Intent;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.net.Uri;
 import android.provider.MediaStore;
@@ -22,7 +22,7 @@ import com.example.mac.douyun.R;
 import java.io.File;
 import java.io.IOException;
 
-import Util.ToastUtil;
+import util.ToastUtil;
 import Utils.MD5Util;
 import config.RequestOptions;
 import start.ImageLoader;
@@ -32,7 +32,7 @@ import static android.content.ContentValues.TAG;
 /**
  * 这个activity是写着跳转用的。。以后方便复制 故不用MVP模式
  */
-public class ShowImgActivity extends AppCompatActivity {
+public class ShowImgActivity extends Activity {
     private ImageView imageView;
     private String url;
     private Button save;

@@ -1,8 +1,4 @@
-package Model;
-
-import java.util.List;
-
-import Bean.GankBean;
+package model;
 
 /**
  * Created by mac on 2018/5/2.

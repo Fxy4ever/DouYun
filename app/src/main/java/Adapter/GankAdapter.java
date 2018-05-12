@@ -3,7 +3,6 @@ package Adapter;
 import android.app.Activity;
 import android.content.Context;
 import android.support.annotation.NonNull;
-import android.support.v4.app.Fragment;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
@@ -17,8 +16,8 @@ import java.util.List;
 import java.util.Map;
 
 import Bean.GankBean;
-import Util.JsonUtil;
-import Util.NetUtil;
+import util.JsonUtil;
+import util.NetUtil;
 import config.Api;
 import config.RequestOptions;
 import start.ImageLoader;
