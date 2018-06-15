@@ -5,7 +5,7 @@
 6.15 
 配置了一天gradle都不行 还是重装大法好<br>
 <br>
-借鉴Google的todoMvp 将之前写的乞丐版mvp进行优化 降低了耦合性 并且逻辑比之前清晰<br>
+借鉴Google的todoMvp 将之前写的乞丐版mvp中的Gank板块进行优化 降低了耦合性 并且逻辑比之前清晰<br>
 
 使用了
 ------
