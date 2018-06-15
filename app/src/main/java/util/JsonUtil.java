@@ -6,8 +6,8 @@ import org.json.JSONObject;
 
 import java.util.List;
 
-import Bean.GankBean;
-import Bean.MediaBean;
+import gank.bean.GankBean;
+import hundredSister.bean.MediaBean;
 
 
 /**

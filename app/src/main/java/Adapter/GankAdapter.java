@@ -7,6 +7,8 @@ import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
+
+import com.bumptech.glide.Glide;
 import com.example.frecyclerview.BaseHolder;
 import com.example.frecyclerview.MultiLayoutBaseAdapter;
 import com.example.mac.douyun.R;
@@ -15,12 +17,11 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import Bean.GankBean;
+import gank.bean.GankBean;
 import util.JsonUtil;
 import util.NetUtil;
 import config.Api;
 import config.RequestOptions;
-import start.ImageLoader;
 
 /**
  * Created by mac on 2018/5/2.
@@ -65,11 +66,18 @@ public class GankAdapter<T> extends MultiLayoutBaseAdapter {
             case 0:
                 Log.d("Fxy", "onBinds: case 0");
                 ImageView imageView = baseHolder.getView(R.id.gank_img);
-                ImageLoader.with(getContext())
+//                ImageLoader.with(getContext())
+//                        .load(datalist.get(i).getUrl())
+//                        .into(imageView)
+//                        .apply(options)
+//                        .display();
+                    Glide
+                        .with(getContext())
                         .load(datalist.get(i).getUrl())
-                        .into(imageView)
-                        .apply(options)
-                        .display();
+                        .centerCrop()
+                        .placeholder(R.mipmap.ic_launcher)
+                        .error(R.mipmap.ic_launcher_round)
+                        .into(imageView);
                 if(MyonItemClickListener != null){
                     baseHolder.itemView.setOnClickListener(new View.OnClickListener() {
                         @Override

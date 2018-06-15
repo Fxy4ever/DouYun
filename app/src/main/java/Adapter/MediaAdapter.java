@@ -2,7 +2,6 @@ package Adapter;
 
 import android.app.Activity;
 import android.content.Context;
-import android.media.MediaPlayer;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
@@ -18,8 +17,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import Bean.MediaBean;
-import MediaLoader.FMediaPlayer;
+import hundredSister.bean.MediaBean;
+import util.MediaLoader.FMediaPlayer;
 import config.Api;
 import start.ImageLoader;
 import util.JsonUtil;
